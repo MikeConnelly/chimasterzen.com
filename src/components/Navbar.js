@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AppBar, Toolbar, Box, Typography } from "@mui/material";
+import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
@@ -16,50 +16,45 @@ class Navbar extends Component {
 
   render() {
     return (
-      <AppBar position="fixed" sx={{ px: 8 }}>
+      <AppBar id="navbar" position="fixed" sx={{ px: 8 }}>
         <Toolbar>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1 }}
-            onClick={(e) => this.handleScrollClick(e, "top")}
-          >
-            CMZ
-          </Typography>
-          <Typography
-            className="nav-divider"
-            component="div"
-            sx={{ flexGrow: 4 }}
-          ></Typography>
-          <Typography
-            className="nav-header"
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1 }}
-            onClick={(e) => this.handleScrollClick(e, "about-container")}
-          >
-            About Us
-          </Typography>
-          <Box
-            sx={{ flexGrow: 1 }}
-            onClick={(e) => this.handleScrollClick(e, "shop-container")}
-          >
-            <Typography variant="h6" component="div">
-              Shop NFTs
+          <Button
+            sx={{ mr: '16em' }}
+            onClick={(e) => this.handleScrollClick(e, "top")}>
+            <Typography variant="h5" sx={{ color: 'white' }}>
+              C.M.Z.
             </Typography>
-          </Box>
-          <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'row', alignItems: 'center' }} onClick={(e) => {}}>
-            <AccountCircleIcon />
-            <Typography variant="h6" component="div">
+          </Button>
+          <Button
+            sx={{ mx: '2em' }}
+            onClick={(e) => this.handleScrollClick(e, "about-container")}>
+            <Typography variant="h6" sx={{ color: 'white' }}>
+              About Us
+            </Typography>
+          </Button>
+          <Button
+            sx={{ mx: '2em' }}
+            onClick={(e) => this.handleScrollClick(e, "shop-container")}>
+            <Typography variant="h6" sx={{ color: 'white' }}>
+              Shop ZenFTs
+            </Typography>
+          </Button>
+          <Button
+            sx={{ mx: '2em', color: 'white' }}
+            onClick={(e) => {}}>
+            <AccountCircleIcon sx={{ mr: '4px' }} />
+            <Typography variant="h6">
               Log in
             </Typography>
-          </Box>
-          <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'row', alignItems: 'center' }} onClick={(e) => {}}>
-            <ShoppingCartIcon />
-            <Typography variant="h6" component="div">
+          </Button>
+          <Button
+            sx={{ mx: '2em', color: 'white' }}
+            onClick={(e) => {}}>
+            <ShoppingCartIcon sx={{ mr: '4px' }} />
+            <Typography variant="h6">
               Cart
             </Typography>
-          </Box>
+          </Button>
         </Toolbar>
       </AppBar>
     );

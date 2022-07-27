@@ -1,5 +1,4 @@
 .App {
-  background-color: #181a1f;
   color: white;
   display: flex;
   flex-direction: column;
@@ -18,10 +17,58 @@
 }
 
 .container {
-  min-height: 100vh;
+  height: 80vh;
   border-top: 1px solid grey;
+  padding: 8em;
 }
 
 .secondary {
   color: #ff007f;
+}
+
+#navbar {
+  background-color: #ff007f;
+}
+
+.header-gallery {
+  background-color: #302244;
+  border: 5px solid transparent;
+  border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+  border-image-slice: 1;
+  height: 400px;
+  margin: 20px auto;
+  width: 350px;
+}
+
+.premium-gallery {
+  height: 150px;
+  width: 125px;
+  border: 5px solid transparent;
+  border-image: linear-gradient(to bottom right, #fcaa27 0%, #d6fc2c 25%, #e3c710 50%, #d6fc2c 75%, #fcaa27 100%);
+  border-image-slice: 1;
+}
+
+.standard-gallery {
+  height: 150px;
+  width: 125px;
+  border: 5px solid transparent;
+  border-image: linear-gradient(to bottom right, silver 0%, #eaeaea 25%, #b2b2b2 50%, #eaeaea 75%, silver 100%);
+  border-image-slice: 1;
+}
+
+.rec-carousel-item {
+  box-shadow: none !important;
+}
+
+#preview-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 10%;
+  margin: auto;
+}
+
+#modal-contents {
+  background-color: rgb(220, 220, 220);
+  padding: 32px 64px;
 }
