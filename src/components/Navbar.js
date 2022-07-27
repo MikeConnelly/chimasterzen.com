@@ -1,9 +1,19 @@
 import React, { Component } from "react";
 import { AppBar, Toolbar, Typography, Button } from "@mui/material";
+import Login from './Login';
+import Cart from './Cart';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      openLogin: false,
+      openCart: false
+    };
+  }
+
   handleScrollClick = (e, sectionId) => {
     e.preventDefault();
     if (sectionId === "top") {
@@ -12,7 +22,19 @@ class Navbar extends Component {
       let section = document.getElementById(sectionId);
       section && section.scrollIntoView({ behavior: "smooth" });
     }
-  };
+  }
+
+  handleOpenLogin = (e) => {
+    this.setState({ openLogin: true });
+  }
+
+  handleCloseLogin = (e) => {
+    this.setState({ openLogin: false });
+  }
+
+  handleOpenCart = (e) => {
+    this.setState({ openCart: true });
+  }
 
   render() {
     return (
@@ -41,7 +63,7 @@ class Navbar extends Component {
           </Button>
           <Button
             sx={{ mx: '2em', color: 'white' }}
-            onClick={(e) => {}}>
+            onClick={this.handleOpenLogin}>
             <AccountCircleIcon sx={{ mr: '4px' }} />
             <Typography variant="h6">
               Log in
@@ -49,13 +71,15 @@ class Navbar extends Component {
           </Button>
           <Button
             sx={{ mx: '2em', color: 'white' }}
-            onClick={(e) => {}}>
+            onClick={this.handleOpenCart}>
             <ShoppingCartIcon sx={{ mr: '4px' }} />
             <Typography variant="h6">
               Cart
             </Typography>
           </Button>
         </Toolbar>
+        <Login open={this.state.openLogin} handleClose={this.state.handleCloseLogin} />
+        <Cart open={this.state.openCart} />
       </AppBar>
     );
   }

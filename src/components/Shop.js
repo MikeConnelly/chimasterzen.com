@@ -1,45 +1,22 @@
 import React, { Component } from "react";
-import { Box, Stack, Typography, Fade } from "@mui/material";
+import { Box, Typography, Stack } from "@mui/material";
 import Preview from './Preview';
-import chi_football from "../img/chi_football.jpg";
-import wolf1 from "../img/wolf1.jpg"
-import wolf2 from "../img/wolf2.jpg"
-import wolf3 from "../img/wolf3.jpg"
-import wolf4 from "../img/wolf4.jpg"
-import wolf5 from "../img/wolf5.jpg"
-import wolf6 from "../img/wolf6.jpg"
-import wolf7 from "../img/wolf7.jpg"
-import wolf8 from "../img/wolf8.jpg"
 import Carousel from "react-elastic-carousel";
+import images from '../images';
 
 class Shop extends Component {
   constructor(props) {
     super(props);
-    this.premiumImages = [
-      chi_football,
-      wolf1,
-      wolf2,
-      wolf3,
-      wolf4,
-      wolf5,
-      wolf6,
-      wolf7,
-      wolf8
-    ];
-    this.standardImages = [
-      chi_football,
-      wolf1,
-      wolf2,
-      wolf3,
-      wolf4,
-      wolf5,
-      wolf6,
-      wolf7,
-      wolf8
-    ];
+    const defaultPreviewItem = {
+      img: null,
+      title: 'title',
+      price: '$0',
+      stock: '0',
+      type: 'premium'
+    };
     this.state = {
       openPreview: false,
-      previewItem: null
+      previewItem: defaultPreviewItem
     };
   }
 
@@ -47,49 +24,69 @@ class Shop extends Component {
     this.setState({ openPreview: true, previewItem: item });
   }
 
+  closePreview = () => {
+    this.setState({ openPreview: false });
+  }
+
+  setPreviewItem = (index) => {
+    if (index < 0 || index >= images.length) {
+      return;
+    }
+    this.setState({ previewItem: images[index] });
+  }
+
+  handleAddToCart = () => {
+    this.setState({ openPreview: false });
+  }
+
+  getImageList = (type) => {
+    return images.filter((item) => item.type === type).map((item) => (
+      <Stack className="gallery-box">
+        <Box
+          className={`${item.type}-gallery`}
+          component="img"
+          src={item.img}
+          sx={{ cursor: 'pointer' }}
+          onClick={(e) => this.openPreview(item)}
+        />
+        <Typography variant="h5">{item.title}</Typography>
+        <Typography variant="p" className="green">{item.price}</Typography>
+        <Typography variant="p" className="secondary">Only {item.stock} Remaining!</Typography>
+      </Stack>
+    ));
+  }
+
   render() {
     return (
       <Box className="container" id="shop-container" sx={{ py: 16 }}>
         <Typography id="shop-header" variant="h1">Shop ZenFTs</Typography>
-        <h2>Premium edition (only 100 minted)</h2>
-        <Box id="premium-gallery-container">
+        <Typography variant="h2">Premium edition</Typography>
+        <Typography variant="h4" className="secondary">Only 100 minted!</Typography>
+        <Box id="premium-gallery-container" sx={{ my: '24px' }}>
           <Carousel
             itemsToShow={6}
             pagination={false}
             focusOnSelect={true}>
-            {
-              this.premiumImages.map((item, i) => (
-                <Box
-                  className="premium-gallery"
-                  component="img"
-                  src={item}
-                  sx={{ cursor: 'pointer' }}
-                  onClick={(e) => this.openPreview(item)}
-                />
-              ))
-            }
+            {this.getImageList('premium')}
           </Carousel>
         </Box>
-        <h2>Standard edition (only 1000 minted)</h2>
-        <Box id="premium-gallery-container">
+        <Typography variant="h2">Standard edition</Typography>
+        <Typography variant="h4" className="secondary">Only 1000 minted!</Typography>
+        <Box id="standard-gallery-container" sx={{ my: '24px' }}>
           <Carousel
             itemsToShow={6}
             pagination={false}
             focusOnSelect={true}>
-            {
-              this.standardImages.map((item, i) => (
-                <Box
-                  className="standard-gallery"
-                  component="img"
-                  src={item}
-                  sx={{ cursor: 'pointer' }}
-                  onClick={(e) => this.openPreview(item)}
-                />
-              ))
-            }
+            {this.getImageList('standard')}
           </Carousel>
         </Box>
-        <Preview open={this.state.openPreview} item={this.state.previewItem} />
+        <Preview
+          open={this.state.openPreview}
+          handleClose={this.closePreview}
+          item={this.state.previewItem}
+          setItem={this.setPreviewItem}
+          handleAddToCart={this.handleAddToCart}
+        />
       </Box>
     );
   }

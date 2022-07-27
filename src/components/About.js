@@ -12,13 +12,15 @@ class About extends Component {
         </Slide>
         <Slide direction="right" in={this.props.showAboutP1} timeout={500}>
           <Box id="about-p1">
-            <Typography variant="p">who is ChiMasterZen...</Typography>
+            <Typography variant="p">
+              who is ChiMasterZen...
+            </Typography>
           </Box>
         </Slide>
         <Slide direction="right" in={this.props.showAboutP2} timeout={500}>
           <Box id="about-p2">
             <Typography variant="p">
-                we have decided to create a new line of NFTs to...
+              we have decided to create a new line of NFTs to...
             </Typography>
           </Box>
         </Slide>
