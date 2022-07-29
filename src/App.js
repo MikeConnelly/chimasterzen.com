@@ -13,10 +13,8 @@ class App extends Component {
     super(props);
     this.state = {
       showHeader: true,
-      showAbout: false,
-      showAboutP1: false,
-      showAboutP2: false,
       trackIds: ['about-header', 'shop-header'],
+      cart: []
     };
   }
 
@@ -35,17 +33,9 @@ class App extends Component {
 
       if (trackedEl && window.scrollY > trackedEl.offsetTop / 3) {
         if (id === 'about-header') {
-          this.setState({ showAbout: true });
-          setTimeout(() => {
-            this.setState({ showAboutP1: true });
-            setTimeout(() => {
-              this.setState({ showAboutP2: true });
-            }, 500);
-          }, 500);
+          // about section
         } else if (id === 'shop-header') {
-          console.log('shop');
-          // setstate for some shop transition
-
+          // shop section
           // hide scroll arrow
           document.getElementById('scroll-arrow').style.display = 'none';
         }
@@ -53,20 +43,20 @@ class App extends Component {
     }
   };
 
+  addToCart = (item) => {
+    this.setState({ cart: [...this.state.cart, item] });
+  }
+
   render() {
     return (
       <div className="App" style={{ backgroundImage: `url(${backgroundImg})` }}>
-        <Navbar />
+        <Navbar cart={this.state.cart} />
 
         <Header showHeader={this.state.showHeader} />
 
-        <About
-          showAbout={this.state.showAbout}
-          showAboutP1={this.state.showAboutP1}
-          showAboutP2={this.state.showAboutP2}
-        />
+        <Shop cart={this.state.cart} addToCart={this.addToCart} />
 
-        <Shop />
+        <About />
 
         <Fade id="scroll-arrow" in={this.state.showHeader} timeout={5000}>
           <KeyboardDoubleArrowDownIcon sx={{ bottom: "20px", position: "fixed", alignSelf: "center" }} />

@@ -36,6 +36,7 @@ class Shop extends Component {
   }
 
   handleAddToCart = () => {
+    this.props.addToCart(this.state.previewItem);
     this.setState({ openPreview: false });
   }
 
@@ -51,7 +52,7 @@ class Shop extends Component {
         />
         <Typography variant="h5">{item.title}</Typography>
         <Typography variant="p" className="green">{item.price}</Typography>
-        <Typography variant="p" className="secondary">Only {item.stock} Remaining!</Typography>
+        <Typography variant="p" className="secondary">{item.stock} in stock</Typography>
       </Stack>
     ));
   }
@@ -61,22 +62,20 @@ class Shop extends Component {
       <Box className="container" id="shop-container" sx={{ py: 16 }}>
         <Typography id="shop-header" variant="h1">Shop ZenFTs</Typography>
         <Typography variant="h2">Premium edition</Typography>
-        <Typography variant="h4" className="secondary">Only 100 minted!</Typography>
+        <Typography variant="h5" className="secondary">Only 100 minted!</Typography>
         <Box id="premium-gallery-container" sx={{ my: '24px' }}>
           <Carousel
             itemsToShow={6}
-            pagination={false}
-            focusOnSelect={true}>
+            pagination={false}>
             {this.getImageList('premium')}
           </Carousel>
         </Box>
         <Typography variant="h2">Standard edition</Typography>
-        <Typography variant="h4" className="secondary">Only 1000 minted!</Typography>
+        <Typography variant="h5" className="secondary">Only 1000 minted!</Typography>
         <Box id="standard-gallery-container" sx={{ my: '24px' }}>
           <Carousel
             itemsToShow={6}
-            pagination={false}
-            focusOnSelect={true}>
+            pagination={false}>
             {this.getImageList('standard')}
           </Carousel>
         </Box>

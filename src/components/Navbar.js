@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AppBar, Toolbar, Typography, Button } from "@mui/material";
+import { AppBar, Toolbar, Typography, Button, Divider, Badge } from "@mui/material";
 import Login from './Login';
 import Cart from './Cart';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -36,9 +36,13 @@ class Navbar extends Component {
     this.setState({ openCart: true });
   }
 
+  handleCloseCart = (e) => {
+    this.setState({ openCart: false });
+  }
+
   render() {
     return (
-      <AppBar id="navbar" position="fixed" sx={{ px: 8 }}>
+      <AppBar id="navbar" position="fixed" sx={{ px: 24 }}>
         <Toolbar>
           <Button
             sx={{ mr: '16em' }}
@@ -47,18 +51,19 @@ class Navbar extends Component {
               C.M.Z.
             </Typography>
           </Button>
-          <Button
-            sx={{ mx: '2em' }}
-            onClick={(e) => this.handleScrollClick(e, "about-container")}>
-            <Typography variant="h6" sx={{ color: 'white' }}>
-              About Us
-            </Typography>
-          </Button>
+          <Divider sx={{ mx: '20vh' }} />
           <Button
             sx={{ mx: '2em' }}
             onClick={(e) => this.handleScrollClick(e, "shop-container")}>
             <Typography variant="h6" sx={{ color: 'white' }}>
               Shop ZenFTs
+            </Typography>
+          </Button>
+          <Button
+            sx={{ mx: '2em' }}
+            onClick={(e) => this.handleScrollClick(e, "about-container")}>
+            <Typography variant="h6" sx={{ color: 'white' }}>
+              About
             </Typography>
           </Button>
           <Button
@@ -72,14 +77,16 @@ class Navbar extends Component {
           <Button
             sx={{ mx: '2em', color: 'white' }}
             onClick={this.handleOpenCart}>
-            <ShoppingCartIcon sx={{ mr: '4px' }} />
+            <Badge badgeContent={this.props.cart.length} color="primary">
+              <ShoppingCartIcon sx={{ mr: '4px' }} />
+            </Badge>
             <Typography variant="h6">
               Cart
             </Typography>
           </Button>
         </Toolbar>
-        <Login open={this.state.openLogin} handleClose={this.state.handleCloseLogin} />
-        <Cart open={this.state.openCart} />
+        <Login open={this.state.openLogin} handleClose={this.handleCloseLogin} />
+        <Cart open={this.state.openCart} cart={this.props.cart} handleClose={this.handleCloseCart} />
       </AppBar>
     );
   }

@@ -8,10 +8,13 @@ class Preview extends Component {
     return (
       <Modal
         className="modal"
-        open={this.props.open}>
+        open={this.props.open}
+        onClose={this.props.handleClose}>
         <Stack
           id="modal-contents"
           sx={{ height: '70vh', width: '55vh' }}>
+          <Typography variant="h2">{this.props.item.title}</Typography>
+          <Typography variant="h4">{this.props.item.type.toUpperCase()} NFT</Typography>
           <Stack direction="row">
             <Button onClick={(e) => this.props.setItem(this.props.item.index - 1)}>
               <ArrowBackIosRoundedIcon
@@ -30,8 +33,8 @@ class Preview extends Component {
               />
             </Button>
           </Stack>
-          <Typography variant="h2">{this.props.item.title}</Typography>
           <Typography variant="h4" sx={{ color: '#6fd336' }}>{this.props.item.price}</Typography>
+          <Typography variant="h4">Only {this.props.item.stock} Remaining!</Typography>
           <Stack direction="row" sx={{ mt: '10px' }}>
             <Button
               sx={{ margin: '8px', color: 'white', backgroundColor: '#ff007f' }}
