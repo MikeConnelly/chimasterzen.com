@@ -8,7 +8,8 @@ const getImageList = (type, openPreview) => {
   return images.filter((item) => item.type === type).map((item) => (
     <Stack className="gallery-box">
       <Box
-        className={`${item.type}-gallery`}
+        id={`${item.type}-gallery`}
+        className={'gallery'}
         component="img"
         src={item.img}
         sx={{ cursor: 'pointer' }}

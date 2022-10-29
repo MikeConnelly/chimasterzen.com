@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material";
 import Preview from './Preview';
 import ShopGallery from "./ShopGallery";
 import images from '../images';
+import './Shop.css';
 
 class Shop extends Component {
   constructor(props) {

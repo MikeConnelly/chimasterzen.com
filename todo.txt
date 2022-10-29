@@ -1,8 +1,7 @@
-clicking outside a modal should close it
-    need to make the entire app the modal wrapper and write the handler functions in App.js
-    pass down state and event functions as props
-
-    fixed with onClose
+rework for mobile:
+    navbar
+    header
+    cart
 
 fix the scrollable list in the cart
 

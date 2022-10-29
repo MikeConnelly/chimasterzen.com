@@ -4,6 +4,7 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 import chi_football from "../img/chi_football.jpg";
 import wolf1 from "../img/wolf1.jpg"
 import Carousel from "react-material-ui-carousel";
+import './Header.css'
 
 export default function Header(props) {
   const headerImages = [
@@ -11,17 +12,21 @@ export default function Header(props) {
     wolf1
   ]
   const { height, width } = useWindowDimensions();
+  const useColumnLayout = width < 960;
+  const stackDirection = useColumnLayout ? "column" : "row";
+  const boxWidth = useColumnLayout ? '100%' : '50%';
   const galleryHeight = height/1.75;
-  const galleryWidth = width/3.5;
+  const galleryWidth = useColumnLayout ? width/1.5 : width/3.5;
+  const extraMargin = useColumnLayout ? '10%' : 0;
   
   return (
     <Box>
       <Fade in={props.showHeader} timeout={2000}>
         <Stack
-          direction="row"
+          direction={stackDirection}
           className="container"
           id="header-container">
-          <Box id="header-left" width='50%'>
+          <Box id="header-left" width={boxWidth} sx={{ my: extraMargin }}>
             <Typography variant="h3">
               A NEW LINE OF NFTS FROM YOUR FAVORITE STREAMER
             </Typography>
@@ -29,7 +34,7 @@ export default function Header(props) {
               CHIMASTERZEN
             </Typography>
           </Box>
-          <Box id="header-right" width='50%'>
+          <Box id="header-right" width={boxWidth}>
             <Typography variant="h4" className="secondary" sx={{ fontWeight: 'bold' }}>
               FINALLY HERE!!!
             </Typography>
