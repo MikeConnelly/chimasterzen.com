@@ -16,12 +16,7 @@
   justify-content: center;
 }
 
-#about-container {
-  margin-top:8em;
-}
-
 .container {
-  height: 80vh;
   padding: 8em;
 }
 
@@ -31,16 +26,6 @@
 
 #navbar {
   background-color: #ff007f;
-}
-
-.header-gallery {
-  background-color: #302244;
-  border: 5px solid transparent;
-  border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
-  border-image-slice: 1;
-  height: 400px;
-  margin: 20px auto;
-  width: 350px;
 }
 
 .premium-gallery {

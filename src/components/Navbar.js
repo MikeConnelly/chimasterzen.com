@@ -4,6 +4,7 @@ import Login from './Login';
 import Cart from './Cart';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import './Header.css'
 
 class Navbar extends Component {
   constructor(props) {
@@ -54,16 +55,16 @@ class Navbar extends Component {
           <Divider sx={{ mx: '20vh' }} />
           <Button
             sx={{ mx: '2em' }}
-            onClick={(e) => this.handleScrollClick(e, "shop-container")}>
+            onClick={(e) => this.handleScrollClick(e, "about-container")}>
             <Typography variant="h6" sx={{ color: 'white' }}>
-              Shop ZenFTs
+              About
             </Typography>
           </Button>
           <Button
             sx={{ mx: '2em' }}
-            onClick={(e) => this.handleScrollClick(e, "about-container")}>
+            onClick={(e) => this.handleScrollClick(e, "shop-container")}>
             <Typography variant="h6" sx={{ color: 'white' }}>
-              About
+              Shop ZenFTs
             </Typography>
           </Button>
           <Button
