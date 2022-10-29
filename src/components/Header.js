@@ -31,10 +31,15 @@ class header extends Component {
               <Typography variant="h4" className="secondary" sx={{ fontWeight: 'bold' }}>
                 FINALLY HERE!!!
               </Typography>
-              <Carousel navButtonsAlwaysVisible={true} height={400} width={400}>
+              <Carousel
+                navButtonsAlwaysInvisible={true}
+                interval={3000}
+                height={500}
+                width={500}
+                navButtonsProps={{ style: { padding: 0 } }}>
                 {
-                  this.headerImages.map((item, i) => (
-                    <Box className="header-gallery" component="img" src={item} height="400px" width="350px" />
+                  this.headerImages.map((item) => (
+                    <Box className="header-gallery" component="img" src={item} height="500px" width="450px" />
                   ))
                 }
               </Carousel>

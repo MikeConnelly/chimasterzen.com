@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Typography, Box, Slide } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 
 class About extends Component {
   render() {

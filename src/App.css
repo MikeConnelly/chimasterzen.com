@@ -16,9 +16,12 @@
   justify-content: center;
 }
 
+#about-container {
+  margin-top:8em;
+}
+
 .container {
   height: 80vh;
-  border-top: 1px solid grey;
   padding: 8em;
 }
 
@@ -60,15 +63,39 @@
   box-shadow: none !important;
 }
 
-#preview-modal {
+.rec.rec-arrow:hover {
+  background-color: #ff007f !important;
+}
+
+.rec.rec-arrow:focus {
+  background-color: #ff007f !important;
+}
+
+.modal {
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 10%;
-  margin: auto;
 }
 
 #modal-contents {
-  background-color: rgb(220, 220, 220);
-  padding: 32px 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: rgb(41, 41, 41);
+  padding: 16px 32px;
+  border-radius: 20px;
+}
+
+#drawer-contents {
+  color: white;
+  background-color: rgb(41, 41, 41);
+  padding: 16px 32px;
+}
+.green {
+  color: #6fd336;
+}
+
+.cart-item {
+  margin: 8px;
 }
