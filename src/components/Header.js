@@ -46,17 +46,15 @@ export default function Header(props) {
               navButtonsAlwaysInvisible={true}
               interval={3000}
               navButtonsProps={{ style: { padding: 0 } }}>
-              {
-                headerImages.map((item) => (
-                  <Box
-                    className="header-gallery"
-                    component="img"
-                    src={item}
-                    height={galleryHeight}
-                    width={galleryWidth}
-                  />
-                ))
-              }
+              {headerImages.map((item) => (
+                <Box
+                  className="header-gallery"
+                  component="img"
+                  src={item}
+                  height={galleryHeight}
+                  width={galleryWidth}
+                />
+              ))}
             </Carousel>
             <Typography variant="h5" className="secondary" sx={{ fontWeight: 'bold' }}>
               You can REALLY own it!
