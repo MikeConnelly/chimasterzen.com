@@ -45,13 +45,14 @@ class Shop extends Component {
     return (
       <Box className="container" id="shop-container" sx={{ py: 16 }}>
         <Typography id="shop-header" variant="h1">Shop ZenFTs</Typography>
-        <Typography variant="h2">Premium edition</Typography>
-        <Typography variant="h5" className="secondary">Only 100 minted!</Typography>
+        <Typography variant="h4">Click to add to cart</Typography>
+        <Typography className="premium-edition-header" variant="h2">Premium edition</Typography>
+        <Typography variant="h5" color="primary">Only 100 minted!</Typography>
         <Box id="premium-gallery-container" sx={{ my: '24px' }}>
           <ShopGallery galleryType="premium" openPreview={this.openPreview} />
         </Box>
         <Typography variant="h2">Standard edition</Typography>
-        <Typography variant="h5" className="secondary">Only 1000 minted!</Typography>
+        <Typography variant="h5" color="primary">Only 1000 minted!</Typography>
         <Box
           id="standard-gallery-container"
           sx={{ my: '24px' }}>

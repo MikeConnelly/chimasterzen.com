@@ -1,12 +1,20 @@
 import React, { useState } from "react";
-import { AppBar, Toolbar, Typography, Button, IconButton, Badge, Menu, MenuItem } from "@mui/material";
+import { AppBar, Toolbar, Box, Typography, Button, IconButton, Badge, Menu, MenuItem } from "@mui/material";
 import Login from './Login';
 import Cart from './Cart';
 import useWindowDimensions from "../hooks/useWindowDimensions";
+import { withStyles } from '@mui/styles'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MenuIcon from '@mui/icons-material/Menu';
 import './Navbar.css';
+
+const styles = theme => ({
+  customBadge: {
+    backgroundColor: 'blue',
+    color: 'white'
+  }
+});
 
 function handleScrollClick(e, sectionId) {
   e.preventDefault();
@@ -20,6 +28,7 @@ function handleScrollClick(e, sectionId) {
 
 function NavbarMenu(props) {
   const [anchorEl, setAnchorEl] = useState(null);
+  const { classes, cartLength } = props;
   const open = Boolean(anchorEl);
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
@@ -42,9 +51,7 @@ function NavbarMenu(props) {
             handleClose();
             handleScrollClick(e, "about-container");
           }}>
-          <Typography variant="h6">
-            About
-          </Typography>
+          <Typography variant="h6">About</Typography>
         </MenuItem>
         <MenuItem
           className="menu-item"
@@ -53,35 +60,29 @@ function NavbarMenu(props) {
             handleClose();
             handleScrollClick(e, "shop-container");
           }}>
-          <Typography variant="h6">
-            Shop ZenFTs
-          </Typography>
+          <Typography variant="h6">Shop ZenFTs</Typography>
         </MenuItem>
         <MenuItem
           className="menu-item"
-          sx={{ mx: '2em', color: 'white' }}
+          sx={{ mx: '2em' }}
           onClick={(e) => {
             handleClose();
             props.setOpenLogin(true);
           }}>
           <AccountCircleIcon sx={{ mr: '4px' }} />
-          <Typography variant="h6">
-            Log in
-          </Typography>
+          <Typography variant="h6">Log in</Typography>
         </MenuItem>
         <MenuItem
           className="menu-item"
-          sx={{ mx: '2em', color: 'white' }}
+          sx={{ mx: '2em' }}
           onClick={(e) => {
             handleClose();
             props.setOpenCart(true);
           }}>
-          <Badge badgeContent={props.cartLength} color="primary">
+          <Badge badgeContent={cartLength}>
             <ShoppingCartIcon sx={{ mr: '4px' }} />
           </Badge>
-          <Typography variant="h6" sx={{ float: 'right' }}>
-            Cart
-          </Typography>
+          <Typography variant="h6" sx={{ float: 'right' }}>Cart</Typography>
         </MenuItem>
       </Menu>
       <IconButton onClick={handleClick}>
@@ -90,70 +91,61 @@ function NavbarMenu(props) {
       <Button
         sx={{ flexGrow: 1, justifyContent: 'left' }}
         onClick={(e) => handleScrollClick(e, "top")}>
-        <Typography variant="h5" sx={{ color: 'white' }}>
-          C.M.Z.
-        </Typography>
+        <Typography variant="h5" sx={{ color: 'white' }}>C.M.Z.</Typography>
       </Button>
     </>
   );
 }
 
-export default function Navbar(props) {
+function Navbar(props) {
+  const { classes } = props;
   const [openLogin, setOpenLogin] = useState(false);
   const [openCart, setOpenCart] = useState(false);
-
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const useDrawer = width < 960;
   
   return (
-    <AppBar id="navbar" position="fixed" sx={{ px: 10 }}>
+    <AppBar id="navbar" position="fixed" color="primary" sx={{ px: 10 }}>
       <Toolbar>
         {useDrawer 
-          ? <NavbarMenu 
+          ? <NavbarMenu
+              classes={classes}
               cartLength={props.cart.length}
               setOpenLogin={setOpenLogin}
               setOpenCart={setOpenCart}
             />
           : <>
               <Button
-                sx={{ flexGrow: 1, justifyContent: 'left' }}
+                sx={{ justifyContent: 'left' }}
                 onClick={(e) => handleScrollClick(e, "top")}>
-                <Typography variant="h5" sx={{ color: 'white' }}>
-                  C.M.Z.
-                </Typography>
+                <Typography variant="h5">C.M.Z.</Typography>
               </Button>
-      
+              <Box sx={{ flexGrow: 1 }} />
               <Button
                 sx={{ mx: '2em' }}
                 onClick={(e) => handleScrollClick(e, "about-container")}>
-                <Typography variant="h6" sx={{ color: 'white' }}>
-                  About
-                </Typography>
+                <Typography variant="h6">About</Typography>
               </Button>
               <Button
                 sx={{ mx: '2em' }}
                 onClick={(e) => handleScrollClick(e, "shop-container")}>
-                <Typography variant="h6" sx={{ color: 'white' }}>
-                  Shop ZenFTs
-                </Typography>
+                <Typography variant="h6">Shop ZenFTs</Typography>
               </Button>
               <Button
-                sx={{ mx: '2em', color: 'white' }}
+                sx={{ mx: '2em' }}
                 onClick={(e) => setOpenLogin(true)}>
                 <AccountCircleIcon sx={{ mr: '4px' }} />
-                <Typography variant="h6">
-                  Log in
-                </Typography>
+                <Typography variant="h6">Log in</Typography>
               </Button>
               <Button
-                sx={{ mx: '2em', color: 'white' }}
+                sx={{ mx: '2em' }}
                 onClick={(e) => setOpenCart(true)}>
-                <Badge badgeContent={props.cart.length} color="primary">
+                <Badge
+                  classes={{ badge: classes.customBadge }}
+                  badgeContent={props.cart.length}>
                   <ShoppingCartIcon sx={{ mr: '4px' }} />
                 </Badge>
-                <Typography variant="h6" sx={{ float: 'right' }}>
-                  Cart
-                </Typography>
+                <Typography variant="h6" sx={{ float: 'right' }}>Cart</Typography>
               </Button>
             </>
         }
@@ -163,3 +155,5 @@ export default function Navbar(props) {
     </AppBar>
   );
 }
+
+export default withStyles(styles)(Navbar);

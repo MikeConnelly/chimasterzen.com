@@ -8,8 +8,7 @@ const getImageList = (type, openPreview) => {
   return images.filter((item) => item.type === type).map((item) => (
     <Stack className="gallery-box">
       <Box
-        id={`${item.type}-gallery`}
-        className={'gallery'}
+        className={`${item.type}-gallery`}
         component="img"
         src={item.img}
         sx={{ cursor: 'pointer' }}
@@ -17,7 +16,7 @@ const getImageList = (type, openPreview) => {
       />
       <Typography variant="h5">{item.title}</Typography>
       <Typography variant="p" className="green">{item.price}</Typography>
-      <Typography variant="p" className="secondary">{item.stock} in stock</Typography>
+      <Typography variant="p" color="primary">{item.stock} in stock</Typography>
     </Stack>
   ));
 }

@@ -1,4 +1,4 @@
-#premium-gallery {
+.premium-gallery {
   height: 150px;
   width: 125px;
   border: 5px solid transparent;
@@ -6,7 +6,7 @@
   border-image-slice: 1;
 }
 
-#standard-gallery {
+.standard-gallery {
   height: 150px;
   width: 125px;
   border: 5px solid transparent;
@@ -21,3 +21,8 @@
 .rec.rec-arrow {
   background-color: #ff007f !important;
 }
+
+.premium-edition-header {
+  color: linear-gradient(to bottom right, #fcaa27 0%, #d6fc2c 25%, #e3c710 50%, #d6fc2c 75%, #fcaa27 100%);
+}
+

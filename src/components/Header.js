@@ -32,13 +32,13 @@ export default function Header(props) {
             </Typography>
             <Typography
               variant="h2"
-              className="secondary"
+              color="primary"
               sx={{ fontWeight: 'bold' }}>
               CHIMASTERZEN
             </Typography>
           </Box>
           <Box id="header-right" width={boxWidth}>
-            <Typography variant="h4" className="secondary" sx={{ fontWeight: 'bold' }}>
+            <Typography variant="h4" color="primary" sx={{ fontWeight: 'bold' }}>
               FINALLY HERE!!!
             </Typography>
             <Carousel
@@ -56,7 +56,7 @@ export default function Header(props) {
                 />
               ))}
             </Carousel>
-            <Typography variant="h5" className="secondary" sx={{ fontWeight: 'bold' }}>
+            <Typography variant="h5" color="primary" sx={{ fontWeight: 'bold' }}>
               You can REALLY own it!
             </Typography>
           </Box>
