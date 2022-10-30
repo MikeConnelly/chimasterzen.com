@@ -32,7 +32,7 @@ function NavbarDrawer(props) {
           <Button
             sx={{ mx: '2em' }}
             onClick={(e) => {
-              setOpenDrawer(false)
+              setOpenDrawer(false);
               handleScrollClick(e, "about-container")}
             }>
             <Typography variant="h6" sx={{ color: 'white' }}>
@@ -101,7 +101,7 @@ export default function Navbar(props) {
           : <>
               <Button
                 sx={{ flexGrow: 1, justifyContent: 'left' }}
-                onClick={(e) => this.handleScrollClick(e, "top")}>
+                onClick={(e) => handleScrollClick(e, "top")}>
                 <Typography variant="h5" sx={{ color: 'white' }}>
                   C.M.Z.
                 </Typography>
@@ -109,14 +109,14 @@ export default function Navbar(props) {
       
               <Button
                 sx={{ mx: '2em' }}
-                onClick={(e) => this.handleScrollClick(e, "about-container")}>
+                onClick={(e) => handleScrollClick(e, "about-container")}>
                 <Typography variant="h6" sx={{ color: 'white' }}>
                   About
                 </Typography>
               </Button>
               <Button
                 sx={{ mx: '2em' }}
-                onClick={(e) => this.handleScrollClick(e, "shop-container")}>
+                onClick={(e) => handleScrollClick(e, "shop-container")}>
                 <Typography variant="h6" sx={{ color: 'white' }}>
                   Shop ZenFTs
                 </Typography>

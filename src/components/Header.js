@@ -30,7 +30,10 @@ export default function Header(props) {
             <Typography variant="h3">
               A NEW LINE OF NFTS FROM YOUR FAVORITE STREAMER
             </Typography>
-            <Typography variant="h2" className="secondary" sx={{ fontWeight: 'bold' }}>
+            <Typography
+              variant="h2"
+              className="secondary"
+              sx={{ fontWeight: 'bold' }}>
               CHIMASTERZEN
             </Typography>
           </Box>

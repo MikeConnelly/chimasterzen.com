@@ -1,18 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import backgroundImg from './img/tile_background.png';
 
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
+
 ReactDOM.render(
   <React.StrictMode>
-    <div 
-      style={{
-        backgroundImage: `url(${backgroundImg})`
-      }}>
-      <App />
-    </div>
+    <ThemeProvider theme={theme}>
+      <div 
+        style={{
+          backgroundImage: `url(${backgroundImg})`
+        }}>
+        <App />
+      </div>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
