@@ -20,7 +20,7 @@ const globalTheme = createTheme({
       main: '#00f'
     },
     background: {
-      default: '#333333'
+      default: '#333'
     }
   }
 });

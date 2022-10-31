@@ -17,7 +17,7 @@ export default function Header(props) {
   const boxWidth = useColumnLayout ? '100%' : '50%';
   const galleryHeight = height/1.75;
   const galleryWidth = useColumnLayout ? width/1.5 : width/3.5;
-  const extraMargin = useColumnLayout ? '10%' : 0;
+  const extraMargin = useColumnLayout ? '15%' : 0;
   
   return (
     <Box>

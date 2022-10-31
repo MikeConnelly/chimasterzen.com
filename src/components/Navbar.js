@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AppBar, Toolbar, Box, Typography, Button, IconButton, Badge, Menu, MenuItem } from "@mui/material";
+import { AppBar, Toolbar, Box, Typography, Button, IconButton, Badge, Menu, MenuItem, Fab } from "@mui/material";
 import Login from './Login';
 import Cart from './Cart';
 import useWindowDimensions from "../hooks/useWindowDimensions";
@@ -16,13 +16,16 @@ const styles = theme => ({
   }
 });
 
-function handleScrollClick(e, sectionId) {
+function handleScrollClick(e, sectionId, callback) {
   e.preventDefault();
   if (sectionId === "top") {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   } else {
     let section = document.getElementById(sectionId);
     section && section.scrollIntoView({ behavior: "smooth" });
+  }
+  if (callback) {
+    callback();
   }
 }
 
@@ -48,8 +51,7 @@ function NavbarMenu(props) {
           className="menu-item"
           sx={{ mx: '2em' }}
           onClick={(e) => {
-            handleClose();
-            handleScrollClick(e, "about-container");
+            handleScrollClick(e, "about-container", handleClose);
           }}>
           <Typography variant="h6">About</Typography>
         </MenuItem>
@@ -57,8 +59,7 @@ function NavbarMenu(props) {
           className="menu-item"
           sx={{ mx: '2em' }}
           onClick={(e) => {
-            handleClose();
-            handleScrollClick(e, "shop-container");
+            handleScrollClick(e, "shop-container", handleClose);
           }}>
           <Typography variant="h6">Shop ZenFTs</Typography>
         </MenuItem>
@@ -79,19 +80,21 @@ function NavbarMenu(props) {
             handleClose();
             props.setOpenCart(true);
           }}>
-          <Badge badgeContent={cartLength}>
+          <Badge
+            classes={{ badge: classes.customBadge }}
+            badgeContent={cartLength}>
             <ShoppingCartIcon sx={{ mr: '4px' }} />
           </Badge>
           <Typography variant="h6" sx={{ float: 'right' }}>Cart</Typography>
         </MenuItem>
       </Menu>
       <IconButton onClick={handleClick}>
-        <MenuIcon />
+        <MenuIcon color="secondary" />
       </IconButton>
       <Button
         sx={{ flexGrow: 1, justifyContent: 'left' }}
         onClick={(e) => handleScrollClick(e, "top")}>
-        <Typography variant="h5" sx={{ color: 'white' }}>C.M.Z.</Typography>
+        <Typography variant="h5">C.M.Z.</Typography>
       </Button>
     </>
   );
@@ -150,6 +153,16 @@ function Navbar(props) {
             </>
         }
       </Toolbar>
+      {
+        props.cart.length > 0
+        ? <Fab
+            color="primary"
+            onClick={(e) => setOpenCart(true)}
+            sx={{ position: 'fixed', top: 80, right: 20 }}>
+            <ShoppingCartIcon />
+          </Fab>
+        : <></>
+      }
       <Login open={openLogin} handleClose={() => setOpenLogin(false)} />
       <Cart open={openCart} cart={props.cart} handleClose={() => setOpenCart(false)} />
     </AppBar>

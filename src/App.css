@@ -31,3 +31,16 @@
   padding: 16px 8px;
   border-radius: 20px;
 }
+
+#cart-drawer .MuiPaper-root {
+  color: white !important;
+  background-color: #333 !important;
+}
+
+.premium-text {
+  color: gold;
+}
+
+.standard-text {
+  color: silver;
+}

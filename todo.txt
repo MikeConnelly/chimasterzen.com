@@ -6,6 +6,4 @@ rework for mobile:
 
 fix the scrollable list in the cart
 
-create login modal
-
 on gallery - click to add to cart

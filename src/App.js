@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { Fade } from "@mui/material";
+import { Fade, Fab } from "@mui/material";
 import Navbar from "./components/Navbar";
 import Header from './components/Header';
 import About from './components/About';
 import Shop from './components/Shop';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import "./App.css";
 
@@ -61,11 +60,6 @@ class App extends Component {
         <Fade id="scroll-arrow" in={this.state.showHeader} timeout={5000}>
           <KeyboardDoubleArrowDownIcon sx={{ bottom: "20px", position: "fixed", alignSelf: "center" }} />
         </Fade>
-
-        <ShoppingCartIcon
-          color="primary"
-          sx={{ fixed: 'fixed', top: 20, right: 20 }}
-        />
       </div>
     );
   }

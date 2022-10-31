@@ -17,37 +17,34 @@ class Login extends Component {
             sx={{
               my: '6px',
               '& .MuiInputLabel-formControl': {
-                borderColor:'white',
                 color: 'white',
-                textDecorationColor: 'white',
-                borderColor: 'white'
-              },
-              '& .MuiInput-underline': {
-                borderColor:'white',
-                color: 'white',
-                textDecorationColor: 'white',
-                borderColor: 'white'
-              },
-              '& .MuiInputBase-input': {
-                borderColor:'white',
-                color: 'white',
-                textDecorationColor: 'white',
-                borderColor: 'white'
               }
             }}>
             <InputLabel htmlFor="email-input">Email</InputLabel>
             <Input id="email-input" />
           </FormControl>
-          <FormControl className="login-formcontrol" sx={{ my: '6px' }}>
+          <FormControl
+            className="login-formcontrol"
+            sx={{
+              my: '6px',
+              '& .MuiInputLabel-formControl': {
+                color: 'white',
+              }
+            }}>
             <InputLabel htmlFor="password-input">Password</InputLabel>
             <Input id="password-input" />
           </FormControl>
           <Button
-            className="modal-button"
             color="primary"
             onClick={this.props.handleClose}
             sx={{ margin: '8px' }}>
-            Close
+            Login
+          </Button>
+          <Button
+            color="primary"
+            onClick={this.props.handleClose}
+            sx={{ margin: '8px' }}>
+            Create Account
           </Button>
         </Stack>
       </Modal>
