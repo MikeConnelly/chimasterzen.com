@@ -10,7 +10,7 @@ class Login extends Component {
         onClose={this.props.handleClose}>
         <Stack
           className="modal-contents"
-          sx={{ height: '70%', width: '30%', color: 'white', bgcolor: 'background.default' }}>
+          sx={{ color: 'white', bgcolor: 'background.default', padding: 12 }}>
           <Typography variant="h2">Login</Typography>
           <FormControl
             className="login-formcontrol" 

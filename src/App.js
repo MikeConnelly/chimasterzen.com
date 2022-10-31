@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Fade, Fab } from "@mui/material";
+import { Fade } from "@mui/material";
 import Navbar from "./components/Navbar";
 import Header from './components/Header';
 import About from './components/About';

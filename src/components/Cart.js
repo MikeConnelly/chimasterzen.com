@@ -48,13 +48,13 @@ class Cart extends Component {
           </List>
           <Typography variant="h5">Total: ${getCartTotal(this.props.cart)}</Typography>
           <Button
-            onClick={this.props.handleClose}
+            onClick={this.props.handleCartLogin}
             sx={{ my: 1 }}>
             Login
           </Button>
           <Typography variant="p">OR</Typography>
           <Button
-            onClick={this.props.handleClose}
+            onClick={this.props.handleContinueAsGuest}
             sx={{ my: 1 }}>
             Checkout as Guest
           </Button>

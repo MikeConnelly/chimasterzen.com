@@ -4,7 +4,7 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 
-function mobilePreview(props, previewHeight, previewWidth) {
+function mobilePreview(props) {
   return (
     <Stack direction="column" sx={{ alignItems: 'center', my: 2 }}>
       <Box
@@ -54,7 +54,7 @@ export default function Preview(props) {
         </Typography>
         {
           useMobileLayout
-          ? mobilePreview(props, previewHeight, previewWidth)
+          ? mobilePreview(props)
           : <Stack
               direction="row"
               sx={{ alignItems: 'center', my: 4 }}>

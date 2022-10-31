@@ -154,17 +154,32 @@ function Navbar(props) {
         }
       </Toolbar>
       {
-        props.cart.length > 0
+        useDrawer && props.cart.length > 0
         ? <Fab
             color="primary"
             onClick={(e) => setOpenCart(true)}
             sx={{ position: 'fixed', top: 80, right: 20 }}>
-            <ShoppingCartIcon />
+            <Badge
+              classes={{ badge: classes.customBadge }}
+              badgeContent={props.cart.length}>
+              <ShoppingCartIcon />
+            </Badge>
           </Fab>
         : <></>
       }
-      <Login open={openLogin} handleClose={() => setOpenLogin(false)} />
-      <Cart open={openCart} cart={props.cart} handleClose={() => setOpenCart(false)} />
+      <Login
+        open={openLogin}
+        handleClose={() => setOpenLogin(false)}
+        handleLogin={() => {}}
+        handleCreateAccount={() => {}}
+      />
+      <Cart
+        open={openCart}
+        cart={props.cart}
+        handleClose={() => setOpenCart(false)}
+        handleCartLogin={() => setOpenLogin(true)}
+        handleContinueAsGuest={() => {}}
+      />
     </AppBar>
   );
 }
