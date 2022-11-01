@@ -15,8 +15,8 @@ export default function Header(props) {
   const useColumnLayout = width < 960;
   const stackDirection = useColumnLayout ? "column" : "row";
   const boxWidth = useColumnLayout ? '100%' : '50%';
-  const galleryHeight = height/1.75;
-  const galleryWidth = useColumnLayout ? width/1.5 : width/3.5;
+  const galleryHeight = useColumnLayout ? height/2.5 : height/1.75;
+  const galleryWidth = useColumnLayout ? width/1.5 : width/4;
   const extraMargin = useColumnLayout ? '15%' : 0;
   
   return (

@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Drawer, Typography, Stack, Box, List, Button, ListItem, Divider } from '@mui/material';
 
 function getCartTotal(cart) {
-  return cart.reduce((sum, item) => sum + parseFloat(item.price.substring(1)), 0);
+  const total = cart.reduce((sum, item) => sum + parseFloat(item.price.substring(1)), 0);
+  return total.toFixed(2);
 }
 
 class Cart extends Component {

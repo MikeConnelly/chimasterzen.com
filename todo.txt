@@ -1,9 +1,4 @@
-rework for mobile:
-    navbar
-    header
-    cart
-    maybe get a better mobile shop carousel
 
-fix the scrollable list in the cart
+need something to happen after trying to login or checkout
 
-on gallery - click to add to cart
+need to get actual pictures

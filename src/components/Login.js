@@ -10,7 +10,7 @@ class Login extends Component {
         onClose={this.props.handleClose}>
         <Stack
           className="modal-contents"
-          sx={{ color: 'white', bgcolor: 'background.default', padding: 12 }}>
+          sx={{ color: 'white', bgcolor: 'background.default', padding: 8 }}>
           <Typography variant="h2">Login</Typography>
           <FormControl
             className="login-formcontrol" 
@@ -36,13 +36,13 @@ class Login extends Component {
           </FormControl>
           <Button
             color="primary"
-            onClick={this.props.handleClose}
+            onClick={this.props.handleLogin}
             sx={{ margin: '8px' }}>
             Login
           </Button>
           <Button
             color="primary"
-            onClick={this.props.handleClose}
+            onClick={this.props.handleCreateAccount}
             sx={{ margin: '8px' }}>
             Create Account
           </Button>

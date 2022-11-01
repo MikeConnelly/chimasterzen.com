@@ -5,12 +5,16 @@ import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 
 function mobilePreview(props) {
+  const previewHeight = 250;
+  const previewWidth = 180;
+
   return (
     <Stack direction="column" sx={{ alignItems: 'center', my: 2 }}>
       <Box
         className={`${props.item.type}-gallery`}
         component="img"
         src={props.item.img}
+        sx={{ height: previewHeight, width: previewWidth }}
       />
       <Stack direction="row" sx={{ mt: 1 }}>
         <Button
@@ -41,7 +45,7 @@ export default function Preview(props) {
       onClose={props.handleClose}>
       <Stack
         className="modal-contents"
-        sx={{ backgroundColor: 'background.default' }}>
+        sx={{ backgroundColor: 'background.default', padding: 6 }}>
         <Typography
           variant="h2"
           color="secondary">

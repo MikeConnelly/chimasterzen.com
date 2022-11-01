@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AppBar, Toolbar, Box, Typography, Button, IconButton, Badge, Menu, MenuItem, Fab } from "@mui/material";
+import { AppBar, Toolbar, Box, Typography, Button, IconButton, Badge, Menu, MenuItem, Fab, Snackbar, Alert } from "@mui/material";
 import Login from './Login';
 import Cart from './Cart';
 import useWindowDimensions from "../hooks/useWindowDimensions";
@@ -51,22 +51,6 @@ function NavbarMenu(props) {
           className="menu-item"
           sx={{ mx: '2em' }}
           onClick={(e) => {
-            handleScrollClick(e, "about-container", handleClose);
-          }}>
-          <Typography variant="h6">About</Typography>
-        </MenuItem>
-        <MenuItem
-          className="menu-item"
-          sx={{ mx: '2em' }}
-          onClick={(e) => {
-            handleScrollClick(e, "shop-container", handleClose);
-          }}>
-          <Typography variant="h6">Shop ZenFTs</Typography>
-        </MenuItem>
-        <MenuItem
-          className="menu-item"
-          sx={{ mx: '2em' }}
-          onClick={(e) => {
             handleClose();
             props.setOpenLogin(true);
           }}>
@@ -92,7 +76,7 @@ function NavbarMenu(props) {
         <MenuIcon color="secondary" />
       </IconButton>
       <Button
-        sx={{ flexGrow: 1, justifyContent: 'left' }}
+        sx={{ ml: 3 }}
         onClick={(e) => handleScrollClick(e, "top")}>
         <Typography variant="h5">C.M.Z.</Typography>
       </Button>
@@ -104,8 +88,21 @@ function Navbar(props) {
   const { classes } = props;
   const [openLogin, setOpenLogin] = useState(false);
   const [openCart, setOpenCart] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
   const { width } = useWindowDimensions();
   const useDrawer = width < 960;
+
+  const handleOpenSnackbar = () => {
+    setOpenLogin(false);
+    setOpenCart(false);
+    setOpenSnackbar(true);
+  }
+  const handleCloseSnackbar = (e, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSnackbar(false);
+  }
   
   return (
     <AppBar id="navbar" position="fixed" color="primary" sx={{ px: 10 }}>
@@ -170,16 +167,21 @@ function Navbar(props) {
       <Login
         open={openLogin}
         handleClose={() => setOpenLogin(false)}
-        handleLogin={() => {}}
-        handleCreateAccount={() => {}}
+        handleLogin={handleOpenSnackbar}
+        handleCreateAccount={handleOpenSnackbar}
       />
       <Cart
         open={openCart}
         cart={props.cart}
         handleClose={() => setOpenCart(false)}
         handleCartLogin={() => setOpenLogin(true)}
-        handleContinueAsGuest={() => {}}
+        handleContinueAsGuest={handleOpenSnackbar}
       />
+      <Snackbar open={openSnackbar} autoHideDuration={5000} onClose={handleCloseSnackbar}>
+        <Alert onClose={handleCloseSnackbar} severity="error" sx={{ width: '100%' }}>
+          An error occurred. Please Try again later.
+        </Alert>
+      </Snackbar>
     </AppBar>
   );
 }
