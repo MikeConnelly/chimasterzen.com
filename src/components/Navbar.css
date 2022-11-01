@@ -1,0 +1,18 @@
+#nav-menu .menu-item {
+  color: black;
+  justify-content: center;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#drawer-contents {
+  padding: 16px 32px;
+}
+
+.cart-item {
+  margin: 8px;
+}

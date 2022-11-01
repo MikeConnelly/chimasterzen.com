@@ -1,56 +1,96 @@
-import React, { Component } from "react";
+import React from "react";
 import { Box, Stack, Modal, Typography, Button } from "@mui/material"
+import useWindowDimensions from "../hooks/useWindowDimensions";
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 
-class Preview extends Component {
-  render() {
-    return (
-      <Modal
-        className="modal"
-        open={this.props.open}
-        onClose={this.props.handleClose}>
-        <Stack
-          id="modal-contents"
-          sx={{ height: '70vh', width: '55vh' }}>
-          <Typography variant="h2">{this.props.item.title}</Typography>
-          <Typography variant="h4">{this.props.item.type.toUpperCase()} NFT</Typography>
-          <Stack direction="row">
-            <Button onClick={(e) => this.props.setItem(this.props.item.index - 1)}>
-              <ArrowBackIosRoundedIcon
-                sx={{ color: 'white', backgroundColor: '#ff007f', borderRadius: '10px', padding: '10px' }}
-              />
-            </Button>
-            <Box
-              className={`${this.props.item.type}-gallery`}
-              component="img"
-              src={this.props.item.img}
-              sx={{ height: 300, width: 250 }}
-            />
-            <Button onClick={(e) => this.props.setItem(this.props.item.index + 1)}>
-              <ArrowForwardIosRoundedIcon
-                sx={{ color: 'white', backgroundColor: '#ff007f', borderRadius: '10px', padding: '10px' }}
-              />
-            </Button>
-          </Stack>
-          <Typography variant="h4" sx={{ color: '#6fd336' }}>{this.props.item.price}</Typography>
-          <Typography variant="h4">Only {this.props.item.stock} Remaining!</Typography>
-          <Stack direction="row" sx={{ mt: '10px' }}>
-            <Button
-              sx={{ margin: '8px', color: 'white', backgroundColor: '#ff007f' }}
-              onClick={this.props.handleClose}>
-              Close
-            </Button>
-            <Button
-              sx={{ margin: '8px', color: 'white', backgroundColor: '#ff007f' }}
-              onClick={this.props.handleAddToCart}>
-              Add to Cart
-            </Button>
-          </Stack>
-        </Stack>
-      </Modal>
-    );
-  }
+function mobilePreview(props) {
+  return (
+    <Stack direction="column" sx={{ alignItems: 'center', my: 2 }}>
+      <Box
+        className={`${props.item.type}-gallery`}
+        component="img"
+        src={props.item.img}
+      />
+      <Stack direction="row" sx={{ mt: 1 }}>
+        <Button
+          sx={{ mx: 1, height: '30%', width: '10%' }}
+          onClick={(e) => props.setItem(props.item.index - 1)}>
+          <ArrowBackIosRoundedIcon />
+        </Button>
+        <Button
+          sx={{ mx: 1, height: '30%', width: '10%' }}
+          onClick={(e) => props.setItem(props.item.index + 1)}>
+          <ArrowForwardIosRoundedIcon />
+        </Button>
+      </Stack>
+    </Stack>
+  );
 }
 
-export default Preview;
+export default function Preview(props) {
+  const { height, width } = useWindowDimensions();
+  const previewHeight = height/2.5;
+  const previewWidth = width/5.5;
+  const useMobileLayout = width < 960;
+
+  return (
+    <Modal
+      className="modal"
+      open={props.open}
+      onClose={props.handleClose}>
+      <Stack
+        className="modal-contents"
+        sx={{ backgroundColor: 'background.default' }}>
+        <Typography
+          variant="h2"
+          color="secondary">
+          {props.item.title}
+        </Typography>
+        <Typography
+          className={`${props.item.type}-text`}
+          variant="h4">
+          {props.item.type.toUpperCase()} NFT
+        </Typography>
+        {
+          useMobileLayout
+          ? mobilePreview(props)
+          : <Stack
+              direction="row"
+              sx={{ alignItems: 'center', my: 4 }}>
+              <Button
+                sx={{ mx: 4, height: '30%', width: '10%' }}
+                onClick={(e) => props.setItem(props.item.index - 1)}>
+                <ArrowBackIosRoundedIcon />
+              </Button>
+              <Box
+                className={`${props.item.type}-gallery`}
+                component="img"
+                src={props.item.img}
+                sx={{ height: previewHeight, width: previewWidth }}
+              />
+              <Button
+                sx={{ mx: 4, height: '30%', width: '10%' }}
+                onClick={(e) => props.setItem(props.item.index + 1)}>
+                <ArrowForwardIosRoundedIcon />
+              </Button>
+            </Stack>
+        }
+        <Typography variant="h4" sx={{ color: '#6fd336' }}>{props.item.price}</Typography>
+        <Typography variant="h4" color="secondary">Only {props.item.stock} Remaining!</Typography>
+        <Stack direction="row" sx={{ mt: '10px' }}>
+          <Button
+            sx={{ margin: '8px' }}
+            onClick={props.handleClose}>
+            Close
+          </Button>
+          <Button
+            sx={{ margin: '8px' }}
+            onClick={props.handleAddToCart}>
+            Add to Cart
+          </Button>
+        </Stack>
+      </Stack>
+    </Modal>
+  );
+}

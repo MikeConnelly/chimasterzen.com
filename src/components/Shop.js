@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Box, Typography, Stack } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Preview from './Preview';
-import Carousel from "react-elastic-carousel";
+import ShopGallery from "./ShopGallery";
 import images from '../images';
+import './Shop.css';
 
 class Shop extends Component {
   constructor(props) {
@@ -40,44 +41,22 @@ class Shop extends Component {
     this.setState({ openPreview: false });
   }
 
-  getImageList = (type) => {
-    return images.filter((item) => item.type === type).map((item) => (
-      <Stack className="gallery-box">
-        <Box
-          className={`${item.type}-gallery`}
-          component="img"
-          src={item.img}
-          sx={{ cursor: 'pointer' }}
-          onClick={(e) => this.openPreview(item)}
-        />
-        <Typography variant="h5">{item.title}</Typography>
-        <Typography variant="p" className="green">{item.price}</Typography>
-        <Typography variant="p" className="secondary">{item.stock} in stock</Typography>
-      </Stack>
-    ));
-  }
-
   render() {
     return (
       <Box className="container" id="shop-container" sx={{ py: 16 }}>
         <Typography id="shop-header" variant="h1">Shop ZenFTs</Typography>
-        <Typography variant="h2">Premium edition</Typography>
-        <Typography variant="h5" className="secondary">Only 100 minted!</Typography>
+        <Typography variant="h4">Click to add to cart</Typography>
+        <Typography className="premium-text" variant="h2">Premium edition</Typography>
+        <Typography variant="h5" color="primary">Only 100 minted!</Typography>
         <Box id="premium-gallery-container" sx={{ my: '24px' }}>
-          <Carousel
-            itemsToShow={6}
-            pagination={false}>
-            {this.getImageList('premium')}
-          </Carousel>
+          <ShopGallery galleryType="premium" openPreview={this.openPreview} />
         </Box>
-        <Typography variant="h2">Standard edition</Typography>
-        <Typography variant="h5" className="secondary">Only 1000 minted!</Typography>
-        <Box id="standard-gallery-container" sx={{ my: '24px' }}>
-          <Carousel
-            itemsToShow={6}
-            pagination={false}>
-            {this.getImageList('standard')}
-          </Carousel>
+        <Typography className="standard-text" variant="h2">Standard edition</Typography>
+        <Typography variant="h5" color="primary">Only 1000 minted!</Typography>
+        <Box
+          id="standard-gallery-container"
+          sx={{ my: '24px' }}>
+          <ShopGallery galleryType="standard" openPreview={this.openPreview} />
         </Box>
         <Preview
           open={this.state.openPreview}

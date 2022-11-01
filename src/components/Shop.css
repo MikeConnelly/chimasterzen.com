@@ -1,0 +1,23 @@
+.premium-gallery {
+  height: 150px;
+  width: 125px;
+  border: 5px solid transparent;
+  border-image: linear-gradient(to bottom right, #fcaa27 0%, #d6fc2c 25%, #e3c710 50%, #d6fc2c 75%, #fcaa27 100%);
+  border-image-slice: 1;
+}
+
+.standard-gallery {
+  height: 150px;
+  width: 125px;
+  border: 5px solid transparent;
+  border-image: linear-gradient(to bottom right, silver 0%, #eaeaea 25%, #b2b2b2 50%, #eaeaea 75%, silver 100%);
+  border-image-slice: 1;
+}
+
+.rec-carousel-item {
+  box-shadow: none !important;
+}
+
+.rec.rec-arrow {
+  background-color: #ff007f !important;
+}

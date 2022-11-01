@@ -5,7 +5,6 @@ import Header from './components/Header';
 import About from './components/About';
 import Shop from './components/Shop';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
-import backgroundImg from './img/tile_background.png';
 import "./App.css";
 
 class App extends Component {
@@ -49,14 +48,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App" style={{ backgroundImage: `url(${backgroundImg})` }}>
+      <div className="App">
         <Navbar cart={this.state.cart} />
 
         <Header showHeader={this.state.showHeader} />
 
-        <Shop cart={this.state.cart} addToCart={this.addToCart} />
-
         <About />
+
+        <Shop cart={this.state.cart} addToCart={this.addToCart} />
 
         <Fade id="scroll-arrow" in={this.state.showHeader} timeout={5000}>
           <KeyboardDoubleArrowDownIcon sx={{ bottom: "20px", position: "fixed", alignSelf: "center" }} />
