@@ -2,14 +2,16 @@ import React from "react";
 import { Box, Stack, Typography, Fade } from "@mui/material";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import chi_football from "../img/chi_football.jpg";
-import wolf1 from "../img/wolf1.jpg"
+import chi_snap from "../img/chi_snap.PNG"
+import chi_prom from "../img/chi_prom.jpg"
 import Carousel from "react-material-ui-carousel";
 import './Header.css'
 
 export default function Header(props) {
   const headerImages = [
     chi_football,
-    wolf1
+    chi_snap,
+    chi_prom
   ]
   const { height, width } = useWindowDimensions();
   const useColumnLayout = width < 960;
