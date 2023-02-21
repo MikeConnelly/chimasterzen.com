@@ -4,7 +4,7 @@ import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/s
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import backgroundImg from './img/tile_background.png';
+import backgroundImg from './assets/img/tile_background.png';
 
 const globalTheme = createTheme({
   palette: {

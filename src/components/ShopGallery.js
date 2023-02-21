@@ -6,7 +6,9 @@ import images from '../images';
 
 const getImageList = (type, openPreview) => {
   return images.filter((item) => item.type === type).map((item) => (
-    <Stack className="gallery-box">
+    <Stack
+      key={`gallery-img-${item.index}`}
+      className="gallery-box">
       <Box
         className={`${item.type}-gallery`}
         component="img"

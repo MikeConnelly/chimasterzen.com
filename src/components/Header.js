@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, Stack, Typography, Fade } from "@mui/material";
 import useWindowDimensions from "../hooks/useWindowDimensions";
-import chi_football from "../img/chi_football.jpg";
-import chi_snap from "../img/chi_snap.PNG"
-import chi_prom from "../img/chi_prom.jpg"
+import chi_football from "../assets/img/chi_football.jpg";
+import chi_snap from "../assets/img/chi_snap.PNG"
+import chi_prom from "../assets/img/chi_prom.jpg"
 import Carousel from "react-material-ui-carousel";
 import './Header.css'
 
@@ -48,8 +48,9 @@ export default function Header(props) {
               navButtonsAlwaysInvisible={true}
               interval={3000}
               navButtonsProps={{ style: { padding: 0 } }}>
-              {headerImages.map((item) => (
+              {headerImages.map((item, idx) => (
                 <Box
+                  key={`header-img-${idx}`}
                   className="header-gallery"
                   component="img"
                   src={item}
