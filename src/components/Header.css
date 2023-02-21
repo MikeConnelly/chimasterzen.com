@@ -5,3 +5,8 @@
   border-image-slice: 1;
   margin: 20px auto;
 }
+
+#header-container {
+  align-items: center;
+  justify-content: center;
+}

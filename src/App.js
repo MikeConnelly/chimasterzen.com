@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import { Fade } from "@mui/material";
+import { Snackbar, Alert, Fade } from "@mui/material";
 import Navbar from "./components/Navbar";
 import Header from './components/Header';
 import About from './components/About';
 import Shop from './components/Shop';
+import Login from './components/Login';
+import Cart from './components/Cart';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import "./App.css";
 
@@ -13,7 +15,10 @@ class App extends Component {
     this.state = {
       showHeader: true,
       trackIds: ['about-header', 'shop-header'],
-      cart: []
+      cart: [],
+      openLogin: false,
+      openCart: false,
+      openSnackbar: false
     };
   }
 
@@ -46,20 +51,58 @@ class App extends Component {
     this.setState({ cart: [...this.state.cart, item] });
   }
 
+  setOpenLogin = (bool) => {
+    this.setState({ openLogin: bool });
+  }
+
+  setOpenCart = (bool) => {
+    this.setState({ openCart: bool });
+  }
+
+  handleOpenSnackbar = () => {
+    this.setState({ openLogin: false, openCart: false, openSnackbar: true });
+  }
+
+  handleCloseSnackbar = (e, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    this.setState({ openSnackbar: false });
+  }
+
   render() {
+    const { showHeader, cart, openLogin, openCart, openSnackbar } = this.state;
     return (
       <div className="App">
-        <Navbar cart={this.state.cart} />
+        <Navbar cart={cart} setOpenLogin={this.setOpenLogin} setOpenCart={this.setOpenCart} />
 
-        <Header showHeader={this.state.showHeader} />
+        <Header showHeader={showHeader} />
 
         <About />
 
-        <Shop cart={this.state.cart} addToCart={this.addToCart} />
+        <Shop cart={cart} addToCart={this.addToCart} />
 
-        <Fade id="scroll-arrow" in={this.state.showHeader} timeout={5000}>
+        <Fade id="scroll-arrow" in={showHeader} timeout={5000}>
           <KeyboardDoubleArrowDownIcon sx={{ bottom: "20px", position: "fixed", alignSelf: "center" }} />
         </Fade>
+        <Login
+          open={openLogin}
+          handleClose={() => this.setOpenLogin(false)}
+          handleLogin={this.handleOpenSnackbar}
+          handleCreateAccount={this.handleOpenSnackbar}
+        />
+        <Cart
+          open={openCart}
+          cart={cart}
+          handleClose={() => this.setOpenCart(false)}
+          handleCartLogin={() => this.setOpenLogin(true)}
+          handleContinueAsGuest={this.handleOpenSnackbar}
+        />
+        <Snackbar open={openSnackbar} autoHideDuration={5000} onClose={this.handleCloseSnackbar}>
+          <Alert onClose={this.handleCloseSnackbar} severity="error" sx={{ width: '100%' }}>
+            An error occurred. Please Try again later.
+          </Alert>
+        </Snackbar>
       </div>
     );
   }

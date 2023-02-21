@@ -11,17 +11,8 @@
   flex-grow: 1;
 }
 
-#header-container {
-  align-items: center;
-  justify-content: center;
-}
-
 .container {
   padding: 10%;
-}
-
-.green {
-  color: #6fd336;
 }
 
 .modal-contents {
@@ -31,15 +22,14 @@
   border-radius: 20px;
 }
 
-#cart-drawer .MuiPaper-root {
-  color: white !important;
-  background-color: #333 !important;
-}
-
 .premium-text {
   color: gold;
 }
 
 .standard-text {
   color: silver;
+}
+
+.green {
+  color: #6fd336;
 }

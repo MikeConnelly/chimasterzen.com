@@ -32,6 +32,31 @@ function mobilePreview(props) {
   );
 }
 
+function desktopPreview(props, previewHeight, previewWidth) {
+  return (
+    <Stack
+      direction="row"
+      sx={{ alignItems: 'center', my: 4 }}>
+      <Button
+        sx={{ mx: 4, height: '30%', width: '10%' }}
+        onClick={(e) => props.setItem(props.item.index - 1)}>
+        <ArrowBackIosRoundedIcon />
+      </Button>
+      <Box
+        className={`${props.item.type}-gallery`}
+        component="img"
+        src={props.item.img}
+        sx={{ height: previewHeight, width: previewWidth }}
+      />
+      <Button
+        sx={{ mx: 4, height: '30%', width: '10%' }}
+        onClick={(e) => props.setItem(props.item.index + 1)}>
+        <ArrowForwardIosRoundedIcon />
+      </Button>
+    </Stack>
+  );
+}
+
 export default function Preview(props) {
   const { height, width } = useWindowDimensions();
   const previewHeight = height/2.5;
@@ -59,26 +84,7 @@ export default function Preview(props) {
         {
           useMobileLayout
           ? mobilePreview(props)
-          : <Stack
-              direction="row"
-              sx={{ alignItems: 'center', my: 4 }}>
-              <Button
-                sx={{ mx: 4, height: '30%', width: '10%' }}
-                onClick={(e) => props.setItem(props.item.index - 1)}>
-                <ArrowBackIosRoundedIcon />
-              </Button>
-              <Box
-                className={`${props.item.type}-gallery`}
-                component="img"
-                src={props.item.img}
-                sx={{ height: previewHeight, width: previewWidth }}
-              />
-              <Button
-                sx={{ mx: 4, height: '30%', width: '10%' }}
-                onClick={(e) => props.setItem(props.item.index + 1)}>
-                <ArrowForwardIosRoundedIcon />
-              </Button>
-            </Stack>
+          : desktopPreview(props, previewHeight, previewWidth)
         }
         <Typography variant="h4" sx={{ color: '#6fd336' }}>{props.item.price}</Typography>
         <Typography variant="h4" color="secondary">Only {props.item.stock} Remaining!</Typography>
