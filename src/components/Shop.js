@@ -30,10 +30,11 @@ class Shop extends Component {
   }
 
   setPreviewItem = (index) => {
-    if (index < 0 || index >= images.length) {
+    const imageList = images()
+    if (index < 0 || index >= imageList.length) {
       return;
     }
-    this.setState({ previewItem: images[index] });
+    this.setState({ previewItem: imageList[index] });
   }
 
   handleAddToCart = () => {

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Snackbar, Alert, Fade } from "@mui/material";
-import Navbar from "./components/Navbar";
+import Navbar from './components/Navbar';
 import Header from './components/Header';
 import About from './components/About';
 import Shop from './components/Shop';
 import Login from './components/Login';
 import Cart from './components/Cart';
+import getImages from './images'
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import "./App.css";
 
@@ -18,12 +19,14 @@ class App extends Component {
       cart: [],
       openLogin: false,
       openCart: false,
-      openSnackbar: false
+      openSnackbar: false,
+      images: []
     };
   }
 
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
+    this.setState({ images: getImages() })
   }
 
   componentWillUnmount() {

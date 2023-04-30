@@ -5,7 +5,7 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 import images from '../images';
 
 const getImageList = (type, openPreview) => {
-  return images.filter((item) => item.type === type).map((item) => (
+  return images().filter((item) => item.type === type).map((item) => (
     <Stack
       key={`gallery-img-${item.index}`}
       className="gallery-box">
