@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from 'react-redux';
 import { AppBar, Toolbar, Box, Typography, Button, IconButton, Badge, Menu, MenuItem, Fab } from "@mui/material";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import { withStyles } from '@mui/styles'
@@ -136,10 +137,10 @@ function cartFab(classes, cartSize, setOpenCart) {
   );
 }
 
-function Navbar({ classes, cart, setOpenLogin, setOpenCart }) {
+function Navbar({ classes, setOpenLogin, setOpenCart }) {
+  const cartSize = useSelector(state => state.cart).length;
   const { width } = useWindowDimensions();
   const useDrawer = width < 960;
-  const cartSize = cart.length;
   
   return (
     <AppBar id="navbar" position="fixed" color="primary" sx={{ px: 10 }}>

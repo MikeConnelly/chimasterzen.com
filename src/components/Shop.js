@@ -1,74 +1,59 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import { useSelector } from 'react-redux';
 import { Box, Typography } from "@mui/material";
 import Preview from './Preview';
 import ShopGallery from "./ShopGallery";
-import images from '../images';
 import './Shop.css';
 
-class Shop extends Component {
-  constructor(props) {
-    super(props);
-    const defaultPreviewItem = {
-      img: null,
-      title: 'title',
-      price: '$0',
-      stock: '0',
-      type: 'premium'
-    };
-    this.state = {
-      openPreview: false,
-      previewItem: defaultPreviewItem
-    };
+export default function Shop() {
+  const imageList = useSelector(state => state.images);
+  const defaultPreviewItem = {
+    img: null,
+    title: 'title',
+    price: '$0',
+    stock: '0',
+    type: 'premium'
+  };
+  const [ openPreview, setOpenPreview ] = useState(false);
+  const [ previewItem, setPreviewItem ] = useState(defaultPreviewItem);
+
+  const handleOpenPreview = (item) => {
+    setOpenPreview(true);
+    setPreviewItem(item);
   }
 
-  openPreview = (item) => {
-    this.setState({ openPreview: true, previewItem: item });
+  const handleClosePreview = () => {
+    setOpenPreview(false);
   }
 
-  closePreview = () => {
-    this.setState({ openPreview: false });
-  }
-
-  setPreviewItem = (index) => {
-    const imageList = images()
-    if (index < 0 || index >= imageList.length) {
-      return;
+  const handleSetPreviewItem = (index) => {
+    if (index >= 0 && index < imageList.length) {
+      setPreviewItem(imageList[index]);
     }
-    this.setState({ previewItem: imageList[index] });
   }
-
-  handleAddToCart = () => {
-    this.props.addToCart(this.state.previewItem);
-    this.setState({ openPreview: false });
-  }
-
-  render() {
-    return (
-      <Box className="container" id="shop-container" sx={{ py: 16 }}>
-        <Typography id="shop-header" variant="h1">Shop ZenFTs</Typography>
-        <Typography variant="h4">Click to add to cart</Typography>
-        <Typography className="premium-text" variant="h2">Premium edition</Typography>
-        <Typography variant="h5" color="primary">Only 100 minted!</Typography>
-        <Box id="premium-gallery-container" sx={{ my: '24px' }}>
-          <ShopGallery galleryType="premium" openPreview={this.openPreview} />
-        </Box>
-        <Typography className="standard-text" variant="h2">Standard edition</Typography>
-        <Typography variant="h5" color="primary">Only 1000 minted!</Typography>
-        <Box
-          id="standard-gallery-container"
-          sx={{ my: '24px' }}>
-          <ShopGallery galleryType="standard" openPreview={this.openPreview} />
-        </Box>
-        <Preview
-          open={this.state.openPreview}
-          handleClose={this.closePreview}
-          item={this.state.previewItem}
-          setItem={this.setPreviewItem}
-          handleAddToCart={this.handleAddToCart}
-        />
+  
+  return (
+    <Box className="container" id="shop-container" sx={{ py: 16 }}>
+      <Typography id="shop-header" variant="h1">Shop ZenFTs</Typography>
+      <Typography variant="h4">Click to add to cart</Typography>
+      <Typography className="premium-text" variant="h2">Premium edition</Typography>
+      <Typography variant="h5" color="primary">Only 100 minted!</Typography>
+      <Box id="premium-gallery-container" sx={{ my: '24px' }}>
+        <ShopGallery galleryType="premium" openPreview={handleOpenPreview} />
       </Box>
-    );
-  }
+      <Typography className="standard-text" variant="h2">Standard edition</Typography>
+      <Typography variant="h5" color="primary">Only 1000 minted!</Typography>
+      <Box
+        id="standard-gallery-container"
+        sx={{ my: '24px' }}>
+        <ShopGallery galleryType="standard" openPreview={handleOpenPreview} />
+      </Box>
+      <Preview
+        open={openPreview}
+        handleClose={handleClosePreview}
+        item={previewItem}
+        setItem={handleSetPreviewItem}
+      />
+    </Box>
+  );
 }
-
-export default Shop;

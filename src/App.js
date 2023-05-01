@@ -6,7 +6,6 @@ import About from './components/About';
 import Shop from './components/Shop';
 import Login from './components/Login';
 import Cart from './components/Cart';
-import getImages from './images'
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import "./App.css";
 
@@ -16,17 +15,14 @@ class App extends Component {
     this.state = {
       showHeader: true,
       trackIds: ['about-header', 'shop-header'],
-      cart: [],
       openLogin: false,
       openCart: false,
-      openSnackbar: false,
-      images: []
+      openSnackbar: false
     };
   }
 
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
-    this.setState({ images: getImages() })
   }
 
   componentWillUnmount() {
@@ -50,10 +46,6 @@ class App extends Component {
     }
   };
 
-  addToCart = (item) => {
-    this.setState({ cart: [...this.state.cart, item] });
-  }
-
   setOpenLogin = (bool) => {
     this.setState({ openLogin: bool });
   }
@@ -74,16 +66,16 @@ class App extends Component {
   }
 
   render() {
-    const { showHeader, cart, openLogin, openCart, openSnackbar } = this.state;
+    const { showHeader, openLogin, openCart, openSnackbar } = this.state;
     return (
       <div className="App">
-        <Navbar cart={cart} setOpenLogin={this.setOpenLogin} setOpenCart={this.setOpenCart} />
+        <Navbar setOpenLogin={this.setOpenLogin} setOpenCart={this.setOpenCart} />
 
         <Header showHeader={showHeader} />
 
         <About />
 
-        <Shop cart={cart} addToCart={this.addToCart} />
+        <Shop />
 
         <Fade id="scroll-arrow" in={showHeader} timeout={5000}>
           <KeyboardDoubleArrowDownIcon sx={{ bottom: "20px", position: "fixed", alignSelf: "center" }} />
@@ -96,7 +88,6 @@ class App extends Component {
         />
         <Cart
           open={openCart}
-          cart={cart}
           handleClose={() => this.setOpenCart(false)}
           handleCartLogin={() => this.setOpenLogin(true)}
           handleContinueAsGuest={this.handleOpenSnackbar}

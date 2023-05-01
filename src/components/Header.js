@@ -1,18 +1,12 @@
 import React from "react";
+import { useSelector } from 'react-redux';
 import { Box, Stack, Typography, Fade } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import useWindowDimensions from "../hooks/useWindowDimensions";
-import chi_football from "../assets/img/chi_football.jpg";
-import chi_snap from "../assets/img/chi_snap.PNG";
-import chi_prom from "../assets/img/chi_prom.jpg";
 import './Header.css'
 
 export default function Header(props) {
-  const headerImages = [
-    chi_football,
-    chi_snap,
-    chi_prom
-  ];
+  const headerImages = useSelector(state => state.images).filter(image => image.header).map(image => image.img);
   const { height, width } = useWindowDimensions();
   const useColumnLayout = width < 960;
   const stackDirection = useColumnLayout ? "column" : "row";

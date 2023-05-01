@@ -61,6 +61,7 @@ export default function() {
       price: '$135.99',
       stock: '22',
       type: 'premium',
+      header: true,
       index: 0
     },
     {
@@ -69,6 +70,7 @@ export default function() {
       price: '$209.98',
       stock: '12',
       type: 'premium',
+      header: true,
       index: 1
     },
     {
@@ -77,6 +79,7 @@ export default function() {
       price: '$99.99',
       stock: '41',
       type: 'premium',
+      header: false,
       index: 2
     },
     {
@@ -85,6 +88,7 @@ export default function() {
       price: '$119.99',
       stock: '30',
       type: 'premium',
+      header: false,
       index: 3
     },
     {
@@ -93,6 +97,7 @@ export default function() {
       price: '$89.99',
       stock: '44',
       type: 'premium',
+      header: false,
       index: 4
     },
     {
@@ -101,6 +106,7 @@ export default function() {
       price: '$89.99',
       stock: '56',
       type: 'premium',
+      header: false,
       index: 5
     },
     {
@@ -109,6 +115,7 @@ export default function() {
       price: '$140.98',
       stock: '8',
       type: 'premium',
+      header: false,
       index: 6
     },
     {
@@ -117,6 +124,7 @@ export default function() {
       price: '$69.69',
       stock: '69',
       type: 'premium',
+      header: false,
       index: 7
     },
     {
@@ -125,6 +133,7 @@ export default function() {
       price: '$79.99',
       stock: '58',
       type: 'premium',
+      header: false,
       index: 8
     },
     {
@@ -133,6 +142,7 @@ export default function() {
       price: '$49.99',
       stock: '261',
       type: 'standard',
+      header: true,
       index: 9
     },
     {
@@ -141,6 +151,7 @@ export default function() {
       price: '$39.99',
       stock: '409',
       type: 'standard',
+      header: false,
       index: 10
     },
     {
@@ -149,6 +160,7 @@ export default function() {
       price: '$45.99',
       stock: '380',
       type: 'standard',
+      header: false,
       index: 11
     },
     {
@@ -157,6 +169,7 @@ export default function() {
       price: '$52.99',
       stock: '520',
       type: 'standard',
+      header: false,
       index: 12
     },
     {
@@ -165,6 +178,7 @@ export default function() {
       price: '$29.99',
       stock: '420',
       type: 'standard',
+      header: false,
       index: 13
     },
     {
@@ -173,6 +187,7 @@ export default function() {
       price: '$59.99',
       stock: '310',
       type: 'standard',
+      header: false,
       index: 14
     },
     {
@@ -181,6 +196,7 @@ export default function() {
       price: '$69.98',
       stock: '288',
       type: 'standard',
+      header: false,
       index: 15
     },
     {
@@ -189,6 +205,7 @@ export default function() {
       price: '$48.99',
       stock: '377',
       type: 'standard',
+      header: false,
       index: 16
     },
     {
@@ -197,6 +214,7 @@ export default function() {
       price: '$29.99',
       stock: '532',
       type: 'standard',
+      header: false,
       index: 17
     }
   ];

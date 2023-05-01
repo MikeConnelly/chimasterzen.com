@@ -1,11 +1,12 @@
 import React from "react";
+import { useSelector } from 'react-redux';
 import { Box, Typography, Stack } from "@mui/material";
 import Carousel from "react-elastic-carousel";
 import useWindowDimensions from "../hooks/useWindowDimensions";
-import images from '../images';
 
 const getImageList = (type, openPreview) => {
-  return images().filter((item) => item.type === type).map((item) => (
+  const images = useSelector(state => state.images);
+  return images.filter((item) => item.type === type).map((item) => (
     <Stack
       key={`gallery-img-${item.index}`}
       className="gallery-box">

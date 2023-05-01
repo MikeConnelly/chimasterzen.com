@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from 'react-redux';
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
-import "./index.css";
 import App from "./App";
+import store from './store';
 import reportWebVitals from "./reportWebVitals";
 import backgroundImg from './assets/img/tile_background.png';
+import "./index.css";
 
 const globalTheme = createTheme({
   palette: {
@@ -55,11 +57,13 @@ theme = responsiveFontSizes(theme);
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <div style={{ backgroundImage: `url(${backgroundImg})` }}>
-        <App />
-      </div>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <div style={{ backgroundImage: `url(${backgroundImg})` }}>
+          <App />
+        </div>
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

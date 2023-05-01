@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../store';
 import { Box, Stack, Modal, Typography, Button } from "@mui/material"
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
@@ -58,10 +60,16 @@ function desktopPreview(props, previewHeight, previewWidth) {
 }
 
 export default function Preview(props) {
+  const dispatch = useDispatch();
   const { height, width } = useWindowDimensions();
   const previewHeight = height/2.5;
   const previewWidth = width/5.5;
   const useMobileLayout = width < 960;
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(props.item));
+    props.handleClose();
+  }
 
   return (
     <Modal
@@ -96,7 +104,7 @@ export default function Preview(props) {
           </Button>
           <Button
             sx={{ margin: '8px' }}
-            onClick={props.handleAddToCart}>
+            onClick={handleAddToCart}>
             Add to Cart
           </Button>
         </Stack>
