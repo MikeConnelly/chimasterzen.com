@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Box, Stack, Modal, Typography, Button } from '@mui/material';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
-import useWindowDimensions from '../hooks/useWindowDimensions';
-import { addToCart } from '../store';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
+import { addToCart } from '../../store';
 
 function mobilePreview(props) {
   const previewHeight = 250;

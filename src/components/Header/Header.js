@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Box, Stack, Typography, Fade } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
-import useWindowDimensions from '../hooks/useWindowDimensions';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 import './Header.css';
 
 export default function Header(props) {

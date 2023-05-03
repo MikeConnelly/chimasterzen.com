@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Snackbar, Alert, Fade } from '@mui/material';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
-import About from './components/About';
-import Cart from './components/Cart';
-import Header from './components/Header';
-import Login from './components/Login';
-import Navbar from './components/Navbar';
-import Shop from './components/Shop';
+import About from './components/About/About';
+import Cart from './components/Cart/Cart';
+import Header from './components/Header/Header';
+import Login from './components/Login/Login';
+import Navbar from './components/Navbar/Navbar';
+import Shop from './components/Shop/Shop';
 import './App.css';
 
 class App extends Component {

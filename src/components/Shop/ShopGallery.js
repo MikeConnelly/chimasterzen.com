@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Box, Typography, Stack } from '@mui/material';
 import Carousel from 'react-elastic-carousel';
-import useWindowDimensions from '../hooks/useWindowDimensions';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 const getImageList = (type, openPreview) => {
   const images = useSelector((state) => state.images);
