@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { Snackbar, Alert, Fade } from "@mui/material";
-import Navbar from './components/Navbar';
-import Header from './components/Header';
-import About from './components/About';
-import Shop from './components/Shop';
-import Login from './components/Login';
-import Cart from './components/Cart';
+import React, { Component } from 'react';
+import { Snackbar, Alert, Fade } from '@mui/material';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
-import "./App.css";
+import About from './components/About';
+import Cart from './components/Cart';
+import Header from './components/Header';
+import Login from './components/Login';
+import Navbar from './components/Navbar';
+import Shop from './components/Shop';
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -17,16 +17,16 @@ class App extends Component {
       trackIds: ['about-header', 'shop-header'],
       openLogin: false,
       openCart: false,
-      openSnackbar: false
+      openSnackbar: false,
     };
   }
 
   componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   handleScroll = (e) => {
@@ -48,22 +48,22 @@ class App extends Component {
 
   setOpenLogin = (bool) => {
     this.setState({ openLogin: bool });
-  }
+  };
 
   setOpenCart = (bool) => {
     this.setState({ openCart: bool });
-  }
+  };
 
   handleOpenSnackbar = () => {
     this.setState({ openLogin: false, openCart: false, openSnackbar: true });
-  }
+  };
 
   handleCloseSnackbar = (e, reason) => {
     if (reason === 'clickaway') {
       return;
     }
     this.setState({ openSnackbar: false });
-  }
+  };
 
   render() {
     const { showHeader, openLogin, openCart, openSnackbar } = this.state;
@@ -78,7 +78,7 @@ class App extends Component {
         <Shop />
 
         <Fade id="scroll-arrow" in={showHeader} timeout={5000}>
-          <KeyboardDoubleArrowDownIcon sx={{ bottom: "20px", position: "fixed", alignSelf: "center" }} />
+          <KeyboardDoubleArrowDownIcon sx={{ bottom: '20px', position: 'fixed', alignSelf: 'center' }} />
         </Fade>
         <Login
           open={openLogin}

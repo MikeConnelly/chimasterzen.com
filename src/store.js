@@ -3,7 +3,7 @@ import loadImages from './images';
 
 const imageSlice = createSlice({
   name: 'images',
-  initialState: loadImages()
+  initialState: loadImages(),
 });
 
 const cartSlice = createSlice({
@@ -12,15 +12,15 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       state.push(action.payload);
-    }
-  }
+    },
+  },
 });
 
 const store = configureStore({
   reducer: {
     images: imageSlice.reducer,
-    cart: cartSlice.reducer
-  }
+    cart: cartSlice.reducer,
+  },
 });
 
 export const { addToCart } = cartSlice.actions;

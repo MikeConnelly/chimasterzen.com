@@ -1,28 +1,32 @@
-import React from "react";
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { Box, Typography, Stack } from "@mui/material";
-import Carousel from "react-elastic-carousel";
-import useWindowDimensions from "../hooks/useWindowDimensions";
+import { Box, Typography, Stack } from '@mui/material';
+import Carousel from 'react-elastic-carousel';
+import useWindowDimensions from '../hooks/useWindowDimensions';
 
 const getImageList = (type, openPreview) => {
-  const images = useSelector(state => state.images);
-  return images.filter((item) => item.type === type).map((item) => (
-    <Stack
-      key={`gallery-img-${item.index}`}
-      className="gallery-box">
-      <Box
-        className={`${item.type}-gallery`}
-        component="img"
-        src={item.img}
-        sx={{ cursor: 'pointer' }}
-        onClick={(e) => openPreview(item)}
-      />
-      <Typography variant="h5">{item.title}</Typography>
-      <Typography variant="p" className="green">{item.price}</Typography>
-      <Typography variant="p" color="primary">{item.stock} in stock</Typography>
-    </Stack>
-  ));
-}
+  const images = useSelector((state) => state.images);
+  return images
+    .filter((item) => item.type === type)
+    .map((item) => (
+      <Stack key={`gallery-img-${item.index}`} className="gallery-box">
+        <Box
+          className={`${item.type}-gallery`}
+          component="img"
+          src={item.img}
+          sx={{ cursor: 'pointer' }}
+          onClick={(e) => openPreview(item)}
+        />
+        <Typography variant="h5">{item.title}</Typography>
+        <Typography variant="p" className="green">
+          {item.price}
+        </Typography>
+        <Typography variant="p" color="primary">
+          {item.stock} in stock
+        </Typography>
+      </Stack>
+    ));
+};
 
 export default function ShopGallery(props) {
   const { width } = useWindowDimensions();
@@ -37,12 +41,10 @@ export default function ShopGallery(props) {
     itemsToShow = 4;
   } else if (width < 1200) {
     itemsToShow = 5;
-  } 
-  
+  }
+
   return (
-    <Carousel
-      itemsToShow={itemsToShow}
-      pagination={false}>
+    <Carousel itemsToShow={itemsToShow} pagination={false}>
       {getImageList(props.galleryType, props.openPreview)}
     </Carousel>
   );

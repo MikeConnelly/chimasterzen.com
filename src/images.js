@@ -1,17 +1,16 @@
 // TODO: possible solution, just use a second repo.
 // Remove images from this one and make it public
 // Copy all code and images to a second repo and make it private. Use that for deployment.
-
-import placeholder from './assets/placeholder/placeholder.png'
+import placeholder from './assets/placeholder/placeholder.png';
 
 /**
  * Conditionally loads all images, if the image doesn't exist then it replaces it with a placeholder.
  * If any image load fails then all subsequent loads will fail,
  * but I'm only using this for all-or-nothing scenarios, so I'm fine with that.
- * 
+ *
  * @returns list of objects containing the image assets and their associated data
  */
-export default function() {
+export default function () {
   let chi_football;
   let chi_prom;
   let chi_52;
@@ -30,7 +29,7 @@ export default function() {
   let chi_squat;
   let chi_swim;
   let chi_young;
-  
+
   try {
     chi_football = require('./assets/img/chi_football.jpg');
     chi_prom = require('./assets/img/chi_prom.jpg');
@@ -50,7 +49,7 @@ export default function() {
     chi_squat = require('./assets/img/chi_squat.jpg');
     chi_swim = require('./assets/img/chi_swim.JPG');
     chi_young = require('./assets/img/chi_young.jpg');
-  } catch(err) {
+  } catch (err) {
     // do nothing, images will be replaced with placeholders
   }
 
@@ -62,7 +61,7 @@ export default function() {
       stock: '22',
       type: 'premium',
       header: true,
-      index: 0
+      index: 0,
     },
     {
       img: chi_prom || placeholder,
@@ -71,7 +70,7 @@ export default function() {
       stock: '12',
       type: 'premium',
       header: true,
-      index: 1
+      index: 1,
     },
     {
       img: chi_fish || placeholder,
@@ -80,7 +79,7 @@ export default function() {
       stock: '41',
       type: 'premium',
       header: false,
-      index: 2
+      index: 2,
     },
     {
       img: chi_boulder || placeholder,
@@ -89,7 +88,7 @@ export default function() {
       stock: '30',
       type: 'premium',
       header: false,
-      index: 3
+      index: 3,
     },
     {
       img: chi_drink || placeholder,
@@ -98,7 +97,7 @@ export default function() {
       stock: '44',
       type: 'premium',
       header: false,
-      index: 4
+      index: 4,
     },
     {
       img: chi_drink_2 || placeholder,
@@ -107,7 +106,7 @@ export default function() {
       stock: '56',
       type: 'premium',
       header: false,
-      index: 5
+      index: 5,
     },
     {
       img: chi_chicken || placeholder,
@@ -116,7 +115,7 @@ export default function() {
       stock: '8',
       type: 'premium',
       header: false,
-      index: 6
+      index: 6,
     },
     {
       img: chi_swim || placeholder,
@@ -125,7 +124,7 @@ export default function() {
       stock: '69',
       type: 'premium',
       header: false,
-      index: 7
+      index: 7,
     },
     {
       img: chi_young || placeholder,
@@ -134,7 +133,7 @@ export default function() {
       stock: '58',
       type: 'premium',
       header: false,
-      index: 8
+      index: 8,
     },
     {
       img: chi_snap || placeholder,
@@ -143,7 +142,7 @@ export default function() {
       stock: '261',
       type: 'standard',
       header: true,
-      index: 9
+      index: 9,
     },
     {
       img: chi_oriole || placeholder,
@@ -152,7 +151,7 @@ export default function() {
       stock: '409',
       type: 'standard',
       header: false,
-      index: 10
+      index: 10,
     },
     {
       img: chi_bjj || placeholder,
@@ -161,7 +160,7 @@ export default function() {
       stock: '380',
       type: 'standard',
       header: false,
-      index: 11
+      index: 11,
     },
     {
       img: chi_52 || placeholder,
@@ -170,7 +169,7 @@ export default function() {
       stock: '520',
       type: 'standard',
       header: false,
-      index: 12
+      index: 12,
     },
     {
       img: chi_red || placeholder,
@@ -179,7 +178,7 @@ export default function() {
       stock: '420',
       type: 'standard',
       header: false,
-      index: 13
+      index: 13,
     },
     {
       img: chi_squat || placeholder,
@@ -188,7 +187,7 @@ export default function() {
       stock: '310',
       type: 'standard',
       header: false,
-      index: 14
+      index: 14,
     },
     {
       img: chi_bench || placeholder,
@@ -197,7 +196,7 @@ export default function() {
       stock: '288',
       type: 'standard',
       header: false,
-      index: 15
+      index: 15,
     },
     {
       img: chi_savage || placeholder,
@@ -206,7 +205,7 @@ export default function() {
       stock: '377',
       type: 'standard',
       header: false,
-      index: 16
+      index: 16,
     },
     {
       img: chi_house || placeholder,
@@ -215,7 +214,7 @@ export default function() {
       stock: '532',
       type: 'standard',
       header: false,
-      index: 17
-    }
+      index: 17,
+    },
   ];
 }

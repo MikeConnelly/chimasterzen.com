@@ -1,58 +1,61 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
-import App from "./App";
+import App from './App';
 import store from './store';
-import reportWebVitals from "./reportWebVitals";
 import backgroundImg from './assets/img/tile_background.png';
-import "./index.css";
+import reportWebVitals from './reportWebVitals';
+import './index.css';
 
 const globalTheme = createTheme({
   palette: {
     primary: {
       light: '#fff',
       main: '#ff007f',
-      contrastText: '#fff'
+      contrastText: '#fff',
     },
     secondary: {
-      main: '#fff'
+      main: '#fff',
     },
     info: {
-      main: '#00f'
+      main: '#00f',
     },
     background: {
-      default: '#333'
-    }
-  }
+      default: '#333',
+    },
+  },
 });
 
-let theme = createTheme({
-  components: {
-    MuiButton: {
-      variants: [
-        {
-          props: { color: 'primary' },
-          style: {
-            textTransform: 'none',
-            border: 'none',
-            backgroundColor: globalTheme.palette.primary.main,
-            color: '#fff',
-            borderRadius: 8,
-            "&:hover": {
-              color: globalTheme.palette.primary.main,
-              backgroundColor: globalTheme.palette.primary.light
+let theme = createTheme(
+  {
+    components: {
+      MuiButton: {
+        variants: [
+          {
+            props: { color: 'primary' },
+            style: {
+              textTransform: 'none',
+              border: 'none',
+              backgroundColor: globalTheme.palette.primary.main,
+              color: '#fff',
+              borderRadius: 8,
+              '&:hover': {
+                color: globalTheme.palette.primary.main,
+                backgroundColor: globalTheme.palette.primary.light,
+              },
+              '&:active': {
+                backgroundColor: globalTheme.palette.primary.dark,
+                color: '#fff',
+              },
             },
-            "&:active": {
-              backgroundColor: globalTheme.palette.primary.dark,
-              color: "#fff"
-            }
-          }
-        }
-      ]
-    }
-  }
-}, globalTheme);
+          },
+        ],
+      },
+    },
+  },
+  globalTheme,
+);
 theme = responsiveFontSizes(theme);
 
 ReactDOM.render(
@@ -65,7 +68,7 @@ ReactDOM.render(
       </ThemeProvider>
     </Provider>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function
